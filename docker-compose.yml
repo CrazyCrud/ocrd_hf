@@ -1,0 +1,50 @@
+services:
+  ocrd-hf-gpu:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        # Use a base image that supports CUDA + PyTorch
+        DOCKER_BASE_IMAGE: ocrd/core-cuda-torch:latest
+        VCS_REF: ${VCS_REF:-main}
+        BUILD_DATE: ${BUILD_DATE:-$(date -u +"%Y-%m-%dT%H:%M:%SZ")}
+    image: ocrd/hf:gpu
+    container_name: ocrd-hf-gpu
+    volumes:
+      - ./data:/data
+      - ./models:/models
+      # Mount a cache directory for HF model weights
+      - ~/.cache/huggingface:/root/.cache/huggingface
+    environment:
+      # Restrict which GPU(s) are visible
+      - CUDA_VISIBLE_DEVICES=0
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    command: /bin/bash
+    stdin_open: true
+    tty: true
+
+  ocrd-hf-cpu:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        DOCKER_BASE_IMAGE: ocrd/core:latest
+        VCS_REF: ${VCS_REF:-main}
+        BUILD_DATE: ${BUILD_DATE:-$(date -u +"%Y-%m-%dT%H:%M:%SZ")}
+    image: ocrd/hf:cpu
+    container_name: ocrd-hf-cpu
+    volumes:
+      - ./data:/data
+      - ./models:/models
+      - ~/.cache/huggingface:/root/.cache/huggingface
+    environment:
+      - CUDA_VISIBLE_DEVICES=""
+    command: /bin/bash
+    stdin_open: true
+    tty: true

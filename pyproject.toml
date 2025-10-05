@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ocrd_hf"
+version = "0.1.0"
+description = "OCR-D wrapper for Hugging Face Transformer OCR models"
+authors = [{name="Constantin Lehenmeier"}]
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+  "ocrd>=2.30.0",
+  "ocrd_models>=2.56.0",
+  "Pillow>=9.0.0",
+  "torch>=1.13.0",
+  "transformers>=4.36",
+]
+keywords = ["OCR", "OCR-D", "text-recognition", "HTR", "transformers"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Image Recognition",
+]
+
+[project.scripts]
+ocrd-hf-recognize = "ocrd_hf.cli:ocrd_hf_recognize"
+
+[tool.setuptools.package-data]
+ocrd_hf = ["*.json", "ocrd-tool.json"]
+
+[project.urls]
+"Homepage" = "https://github.com/CrazyCrud/ocrd_hf"
+
+[tool.setuptools]
+packages = ["ocrd_party"]
+include-package-data = true

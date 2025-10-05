@@ -1,0 +1,43 @@
+{
+  "git_url": "https://github.com/CrazyCrud/ocrd_hf",
+  "dockerhub": "ocrd/hf",
+  "version": "0.1.0",
+  "tools": {
+    "ocrd-hf-recognize": {
+      "executable": "ocrd-hf-recognize",
+      "categories": [
+        "Text recognition and optimization"
+      ],
+      "steps": [
+        "recognition/text-recognition"
+      ],
+      "description": "Recognize text lines using Hugging Face Transformer OCR models (e.g. TrOCR).",
+      "input_file_grp_cardinality": 1,
+      "output_file_grp_cardinality": 1,
+      "parameters": {
+        "model_id": {
+          "description": "Hugging Face model id (e.g. 'microsoft/trocr-base-printed') or local path to a compatible model.",
+          "type": "string",
+          "required": true
+        },
+        "device": {
+          "description": "Compute device for inference (e.g. 'cpu', 'cuda', 'cuda:0').",
+          "type": "string",
+          "default": "cpu"
+        },
+        "batch_size": {
+          "description": "Number of TextLines processed per batch. Reduce if you hit OOM.",
+          "type": "integer",
+          "format": "int32",
+          "default": 8
+        },
+        "fp16": {
+          "description": "Enable half-precision on CUDA to reduce VRAM usage.",
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "resources": []
+    }
+  }
+}
