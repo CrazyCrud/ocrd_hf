@@ -31,16 +31,23 @@ class HFRecognize(Processor):
         """
         Initialize backend once per run. Called before processing.
         """
-        model_id = self.parameter.get("model_id")
+        model_id = self.parameter.get("model")
         if not model_id:
-            raise ValueError("Missing required parameter: 'model_id'")
+            raise ValueError("Missing required parameter: 'model'")
+        
+        try:
+            model_path = self.resolve_resource(model_id)
+        except Exception:
+            # Fallback: treat it as a HF identifier
+            model_path = model_id
+
         device = self.parameter.get("device", "cpu")
         fp16 = bool(self.parameter.get("fp16", False))
         max_new_tokens = self.parameter.get("max_new_tokens", None)
         self.batch_size = int(self.parameter.get("batch_size", 8))
 
         self.adapter = build_adapter(
-            model_id,
+            model_path,
             device=device,
             fp16=fp16,
             max_new_tokens=max_new_tokens

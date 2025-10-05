@@ -15,7 +15,7 @@
       "input_file_grp_cardinality": 1,
       "output_file_grp_cardinality": 1,
       "parameters": {
-        "model_id": {
+        "model": {
           "description": "Hugging Face model id (e.g. 'microsoft/trocr-base-printed') or local path to a compatible model.",
           "type": "string",
           "required": true
@@ -37,7 +37,20 @@
           "default": false
         }
       },
-      "resources": []
+      "resources": [
+        {
+          "url": "https://huggingface.co/microsoft/trocr-base-handwritten/resolve/main/pytorch_model.bin",
+          "name": "trocr-base-handwritten.bin",
+          "parameter_usage": "without-extension",
+          "description": "TrOCR base handwritten model weights"
+        },
+        {
+          "url": "https://huggingface.co/dh-unibe/trocr-kurrent/resolve/main/pytorch_model.bin",
+          "name": "trocr-kurrent.bin",
+          "parameter_usage": "without-extension",
+          "description": "Handwritten Text Recognition model for 19th century German"
+        }  
+      ]
     }
   }
 }

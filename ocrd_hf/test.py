@@ -12,7 +12,7 @@ def main():
     )
     parser.add_argument("image_path", help="Path to the line image (PNG, JPG, etc.)")
     parser.add_argument(
-        "-m", "--model-id",
+        "-m", "--model",
         default="microsoft/trocr-base-printed",
         help="HuggingFace model id or local path"
     )
@@ -43,7 +43,7 @@ def main():
 
     try:
         adapter = build_adapter(
-            model_id=args.model_id,
+            model_id=args.model,
             device=device_str,
             fp16=args.fp16,
             max_new_tokens=args.max_new_tokens
