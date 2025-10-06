@@ -10,3 +10,6 @@ OCR-D processor for **Hugging Face** Transformer OCR models.
 
 ```bash
 pip install -e .
+```
+
+The *Docker* deployment is **still in testing** 
