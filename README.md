@@ -11,7 +11,8 @@ OCR-D processor for **Hugging Face** Transformer OCR models.
 ```commandline
 pip install -e .
 ```
-Or install via Dockerhub:
+
+Or install via Docker:
 ```commandline
 docker compose build
 docker-compose run ocrd-hf
@@ -20,12 +21,10 @@ For CPU only:
 ```commandline
 docker compose build ocrd-hf-cpu
 docker-compose run ocrd-hf-cpu
-```   
-
+```       
+The *Docker* deployment is **still in testing**. 
 ## Usage
 ### Basic Usage
 ```
 ocrd-hf-recognize -I OCR-D-TABLE-LINE -O OCR-D-TEXT-HF -P device cpu -P model "microsoft/trocr-base-handwritten"
 ```
-
-
