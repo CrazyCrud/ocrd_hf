@@ -8,10 +8,10 @@ LABEL \
     org.label-schema.vcs-ref=$VCS_REF \
     org.label-schema.vcs-url="https://github.com/CrazyCrud/ocrd_hf" \
     org.label-schema.build-date=$BUILD_DATE \
-    org.opencontainers.image.vendor="YourOrg" \
+    org.opencontainers.image.vendor="DFG-Funded Initiative for Optical Character Recognition Development" \
     org.opencontainers.image.title="ocrd_hf" \
     org.opencontainers.image.description="OCR-D wrapper for HuggingFace OCR recognition" \
-    org.opencontainers.image.source="https://github.com/YourOrg/ocrd_hf" \
+    org.opencontainers.image.source="https://github.com/CrazyCrud/ocrd_hf" \
     org.opencontainers.image.revision=$VCS_REF \
     org.opencontainers.image.created=$BUILD_DATE \
     org.opencontainers.image.base.name=$DOCKER_BASE_IMAGE
