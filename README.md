@@ -29,6 +29,6 @@ The *Docker* deployment is **still in testing**.
 ocrd-hf-recognize -I OCR-D-TABLE-LINE -O OCR-D-TEXT-HF -P device cpu -P model "microsoft/trocr-base-handwritten"
 ```
 ## Remark
-ChatGPT 4.5 as well as Claude Opus 4.5 have been used to generate this OCR-D extension.
+ChatGPT 5 as well as Claude Opus 4.5 have been used to generate this OCR-D extension.
 At the beginning, the kraken extension was used as an example: [github.com/OCR-D/ocrd_kraken](https://github.com/OCR-D/ocrd_kraken)
 Generated code has been manually tested and iteratively improved using the listed models.
